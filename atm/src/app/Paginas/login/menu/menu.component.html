@@ -1,0 +1,29 @@
+<div class="col-12 p-0 d-flex">
+    <div class="screen-flex-horizontal gap-3">
+        <img class="logo my-auto" src="../../../assets/img/login/banquito.png" alt="Logo">
+        <label class="fw-bold fs-2">Elija una acción</label>
+        <div class="d-flex gap-3 mx-auto">
+
+        </div>
+        <div class="container d-flex flex-column align-items-center mt-5">
+            <div class="d-flex justify-content-center">
+                <div class="white-box-custom bigger-box">
+                    <a (click)="transaccionCt()" style="display: block; text-decoration: none; color: inherit; text-align: center;">
+                        <div class="row justify-content-center">
+                            <img class="logo img-fluid pt" src="../../../../assets/img/tarjetas/contarjeta.svg" alt="Tarjeta">
+                        </div>
+                        <label class="fw-bold fs-3 mx-auto">Transacciones con tarjeta</label>
+                    </a>
+                </div>
+                <div class="white-box-custom bigger-box">
+                    <a (click)="transaccionSt()" style="display: block; text-decoration: none; color: inherit; text-align: center;">
+                        <div class="row justify-content-center">
+                            <img class="logo img-fluid pt" src="../../../../assets/img/tarjetas/sinTarjeta.svg" alt="Tarjeta">
+                        </div>
+                        <label class="fw-bold fs-3 mx-auto">Transacciones sin tarjeta</label>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

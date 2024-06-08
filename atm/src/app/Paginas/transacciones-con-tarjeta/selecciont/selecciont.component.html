@@ -1,0 +1,23 @@
+<div class="screen-flex-horizontal gap-3">
+    <img class="logo my-auto" src="../../../assets/img/login/banquito.png" alt="Logo">
+    <div class="card fondo gap-5">
+        <div class="d-flex gap-3 mx-auto">
+            <label class="fw-bold fs-2">Seleccione el tipo de transacción</label>
+        </div>
+        <div class="mx-auto d-flex tarjeta flex-column">
+            <a (click)="retiros()"
+                style="display: block; text-decoration: none; color: inherit; text-align: center;">
+                <div class="card tarjeta img-fluid ">
+                    <img class="tarjeta p-3" src="../../../../assets/img/tarjetas/retiros.svg" alt="Tarjeta">
+                </div>
+            </a>
+            <label class="fw-bold fs-3 mx-auto">Retiros</label>
+        </div>
+        <div class="mx-auto d-flex tarjeta flex-column">
+            <div (click)="consultas()" class="card tarjeta img-fluid ">
+                <img class="tarjeta p-3" src="../../../../assets/img/tarjetas/consultas.svg" alt="Tarjeta">
+            </div>
+            <label class="fw-bold fs-3 mx-auto">Consultas</label>
+        </div>
+    </div>
+</div>

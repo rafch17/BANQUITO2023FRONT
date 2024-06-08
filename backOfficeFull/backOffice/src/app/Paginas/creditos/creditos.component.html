@@ -1,0 +1,187 @@
+<div class="container-fluid p-0">
+    <div class="row">
+        <!-- Navbar -->
+        <div class="col-12 px-0" class="borde-ancho">
+            <app-navbar></app-navbar>
+        </div>
+    </div>
+    <div class="row m-0">
+        <!-- Sidebar -->
+        <div class="col-2 p-0 d-flex flex-column vh-100">
+            <app-sidebar class="flex-grow-1"></app-sidebar>
+        </div>
+        <!-- Main Content -->
+
+        <div class="col-10 p-0 d-flex">
+            <!-- Aquí puedes colocar el contenido principal -->
+            <div class="p-4 flex-grow-1" style="background-color: #DBD8D8;">
+                <div class="container">
+                    <div class="container-fluid">
+                        <div class="row title mt-5">
+                            <h4>Nuevo Credito</h4>
+                        </div>
+                        <div class="row contenido my-3 p-5 rounded-4">
+                            <h5>Datos de Solicitante (Principal)</h5>
+                            <hr>
+                            <form action="">
+                                <div class="form-group">
+                                    <select class="form-select" name="tipo-identificacion" [(ngModel)]="participePrincipal.tipo_identificacion" (change)="restValorClienteP(); this.participePrincipal.numero_identificacion = '';">
+                                        <option value="">Tipo de Identificacion</option>
+                                        <option value="CED">Cedula</option>
+                                        <option value="PAS">Pasaporte</option>
+                                        <option value="RUC">RUC</option>
+                                    </select>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <input type="text" class="form-control my-2" placeholder="No. de identificacion" name="numero_identificacion" [(ngModel)]="participePrincipal.numero_identificacion" (change)="restValorClienteP();">
+                                            <small id="mensajeIdentificacionP" class="form-text text-danger" *ngIf="!identPFirst && !identPValidacion">{{mensajeIdentificacion}}</small>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center justify-content-center">
+                                            <button type="button" class="btn btn-success" (click)="getClienteP()">Validar</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <input type="text" class="form-control my-4" placeholder="____" name="nombres" value="{{participePrincipal.apellidos}} {{participePrincipal.nombres}} {{participePrincipal.razonSocial}}" readonly>
+                                    <select class="form-select" name="cuentaP" [(ngModel)]="participePrincipal.numeroCuenta">
+                                        <option value="">Seleccione una cuenta</option>
+                                        <option *ngFor="let opcion of cuentasClienteP" [value]="opcion.numeroCuenta">{{ opcion.numeroCuenta }}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row contenido my-3 p-5 rounded-4">
+                            <h5>Datos de Participes</h5>
+                            <hr>
+                            <form action="">
+                                <div class="form-group">
+                                    <select class="form-select" name="tipoIdentificacion" [(ngModel)]="participantes.tipo_identificacion" (change)="restValorClienteS(); this.participantes.numero_identificacion = '';">
+                                        <option value="">Tipo de Identificacion</option>
+                                        <option value="CED">Cedula</option>
+                                        <option value="PAS">Pasaporte</option>
+                                        <option value="RUC">RUC</option>
+                                    </select>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <input type="text" class="form-control my-2" name="identificacion" placeholder="No. de identificacion" [(ngModel)]="participantes.numero_identificacion" (change)="restValorClienteS();">
+                                            <small id="mensajeIdentificacion" class="form-text text-danger" *ngIf="!identSFirst && !identSValidacion">{{mensajeIdentificacionDos}}</small>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center justify-content-center">
+                                            <button type="button" class="btn btn-success" (click)="getClienteS()">Validar</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <input type="text" class="form-control my-3" name="nombres" placeholder="____" value="{{participantes.apellidos}} {{participantes.nombres}} {{participantes.razonSocial}}" readonly>
+                                    <small id="mensajeExistencia" class="form-text text-danger" *ngIf="existencia">{{mensajeValidacion}}</small>
+                                    <div class="row">
+                                        <div class="col-11">
+                                            <select class="form-select" name="cuentaS" [(ngModel)]="participantes.numeroCuenta">
+                                                <option value="">Seleccione una cuenta</option>
+                                                <option *ngFor="let opcion of cuentasClienteS" [value]="opcion.numeroCuenta">{{ opcion.numeroCuenta }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-1 text-center d-flex align-items-center">
+                                            <a type="button" class="btn btn-dark" (click)="addParticipante()">
+                                                <i class="bi bi-plus-lg"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-sm-12 mt-4">
+                                    <div class="col">
+                                        <table id="tbParticipante"
+                                            class="table table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Tipo</th>
+                                                    <th scope="col">Identificacion</th>
+                                                    <th scope="col">Cuenta</th>
+                                                    <th scope="col">Nombres</th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row contenido my-3 p-5 rounded-4">
+                            <h5>Datos del Credito</h5>
+                            <hr>
+                            <form action="">
+                                <div class="form-group row">
+                                    <label for="producto" class="col-sm-2 col-form-label">Producto: </label>
+                                    <select class="form-select" name="producto" (change)="getIdTipoCredito($event)">
+                                        <option value=0 selected>Seleccione el credito</option>
+                                        <option *ngFor="let opcion of listaTipoCredito" [value]="opcion.codTipoCredito">{{ opcion.nombre }}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group row mt-2">
+                                    <label for="monto" class="col-sm-2 col-form-label">Monto: </label>
+
+                                    <div class="col-sm-10 row">
+                                        <div class="col-sm-4">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">$</div>
+                                                </div>
+                                                <input type="number" class="form-control" min={{tipoCredito.montoMinimo}} max={{tipoCredito.montoMaximo}} id="monto" name="monto"
+                                                (change)="validacionesEnteros($event, tipoCredito.montoMinimo, tipoCredito.montoMaximo); calcularTasaInteres();" [(ngModel)]="credito.monto">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 text-center">
+                                            <p style="font-size: 25px;">.</p>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control" id="decimal"
+                                                value="00" readonly>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <span id="monto" class="form-text">
+                                                Monto desde {{tipoCredito.montoMinimo}} a {{tipoCredito.montoMaximo}}.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="plazo" class="col-sm-2 col-form-label">Plazo (meses): </label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="plazo" min={{tipoCredito.plazoMinimo}} max={{tipoCredito.plazoMaximo}} id="plazo" (change)="validacionesEnteros($event, tipoCredito.plazoMinimo, tipoCredito.plazoMaximo); calcularTasaInteres();" [(ngModel)]="credito.plazo">
+                                        <div id="mensajePlazo" class="form-text ">El plazo para el credito es de {{tipoCredito.plazoMinimo}} a {{tipoCredito.plazoMaximo}} meses.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <label for="calculo" class="col-sm-2 col-form-label">Tipo de cálculo: </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select">
+                                            <option selected>CUOTA FIJA - FRANCES</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <label for="min" class="col-sm-2 col-form-label">Tasa de Interes</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="tasa" value="{{credito.tasaInteres}} %" readonly>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="px-4 mt-4">
+                                <button type="button" class="btn btn-success mx-1"
+                                    (click)="continuar()">Continuar</button>
+                                <button type="button" class="btn btn-secondary mx-1" (click)="regresar()">Regresar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

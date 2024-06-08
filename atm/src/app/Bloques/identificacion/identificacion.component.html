@@ -1,0 +1,17 @@
+<div class="screen-grid-horizontal">
+    <div class="d-flex flex-column m-3 flex-grow-1">
+        <img class="logo my-auto mx-auto" src="../../../assets/img/login/banquito.png" alt="Logo">
+        <label class="fw-bold fs-3 text-center">Por favor digite su número de identificación</label>
+    </div>
+    <div class="flex-grow-1 p-3 d-flex flex-column gap-4">
+        <div class="d-flex m-5 form-group px-4">
+            <input type="text" class="rounded form-control input-lg" [(ngModel)]="numeroIdentificacion"
+                [disabled]="true">
+        </div>
+        <div class="grid-buttons flex-grow-1">
+            <button pButton pRipple class="btn"
+                [ngClass]="{'red' : button == 'X', 'green' : button == '✓'}" *ngFor="let button of buttons"
+                (click)="processButton(button)">{{button}}</button>
+        </div>
+    </div>
+</div>

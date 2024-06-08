@@ -1,0 +1,23 @@
+<router-outlet></router-outlet>
+<div class="screen-flex-vertical gap-2">
+    <div class="d-flex justify-content-between">
+        <label class="fw-bold fs-3 my-auto p-5">Depósitos</label>
+        <img class="logo m-2" src="../../../assets/img/login/banquito.png" alt="Logo">
+    </div>
+    <div class="card fondo gap-5">
+        <div class="d-flex gap-3 mx-auto">
+            <label class="fw-bold fs-2">Seleccione el tipo de identificación</label>
+        </div>
+        <div class="d-flex gap-5 mx-auto">
+            <button pButton pRipple label="Cédula" severity="secondary"
+            class="btn btn-lg rounded fw-bold" [routerLink]="['identificacion']">Cédula</button>
+            <button pButton pRipple label="RUC" severity="secondary"
+            class="btn btn-lg rounded fw-bold" [routerLink]="['identificacion']">RUC</button>
+            <button pButton pRipple label="Pasaporte" severity="secondary"
+            class="btn btn-lg rounded fw-bold" [routerLink]="['identificacion']">Pasaporte</button>
+        </div>
+        <div class="mx-auto d-flex tarjeta flex-column img-fluid">
+            <img class="tarjeta p-3" src="../../../../assets/img/tarjetas/identification.svg" alt="Tarjeta">
+        </div>
+    </div>
+</div>

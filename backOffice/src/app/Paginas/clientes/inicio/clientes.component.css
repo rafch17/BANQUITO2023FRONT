@@ -1,0 +1,81 @@
+
+.borde-ancho {
+    border-bottom: 5px solid #ccc; 
+}
+
+h4, h5{
+    color: #159768;
+}
+.title{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+.contenido {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 79%;
+}
+input[type=text], select{
+    background-color: #ECECEC;
+}
+button {
+    float: right;
+    width: 100px;
+}
+
+/* Estilos para los cuadros blancos personalizados */
+.white-box-custom {
+    width: 150px; /* Ancho de los cuadros */
+    height: 150px; /* Altura de los cuadros */
+    background-color: white;
+    margin: 60px;
+}
+
+/* Estilos para aumentar el tamaño de los cuadros */
+.bigger-box {
+    width: 240px; /* Ancho más grande */
+    height: 240px; /* Altura más grande */
+    border-radius: 15px; 
+}
+
+/* Estilos para alinear los cuadros horizontalmente */
+.container .d-flex {
+    flex-direction: row; /* Alinear elementos en una fila */
+}
+
+
+/* Ajustes para los contenedores */
+.sidebar-container {
+    overflow-y: auto; /* Agregar scroll vertical si es necesario */
+    /* Asegúrate de que no haya desbordamiento horizontal */
+    overflow-x: hidden;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(to top, #186f3f, #5eae75);
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 12.5px;
+  }
+
+  .scroll-container {
+    width: 83%;
+    height: 600px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+  }
+  
+  .scroll-content {
+    width: 100%;
+    height: 720px;
+  }
+  
+  .container-fluid.p-0 {
+    overflow-x: hidden;
+  }

@@ -1,0 +1,19 @@
+.active {
+    background-color: #1C9352;
+    color: #fff !important;
+  }
+
+  /* Estilos CSS */
+
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.navbar-nav {
+  flex-grow: 1; 
+  font-family: 'Times New Roman', serif;
+  font-size: 115%;
+}

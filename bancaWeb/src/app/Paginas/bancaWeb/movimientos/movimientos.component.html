@@ -1,0 +1,76 @@
+<div class="container-fluid p-0">
+  <div class="row m-0">
+    <!-- Navbar -->
+    <div class="col-12 px-0 borde-ancho">
+      <app-navbarbw></app-navbarbw>
+    </div>
+  </div>
+  <div class="row m-0">
+    <!-- Sidebar -->
+    <div class="col-2 p-0 d-flex flex-column vh-100">
+      <app-sidebarbw class="flex-grow-1"></app-sidebarbw>
+    </div>
+    <!-- Main Content -->
+
+    <div class="col-10 p-0 d-flex">
+      <!-- Aquí puedes colocar el contenido principal -->
+      <div class="p-4 flex-grow-1" style="background-color: #dbd8d8">
+        <div class="container">
+          <div class="container-fluid">
+            <div class="container-fluid">
+              <div class="row contenido my-3 p-5 rounded-4">
+                <!-- Select para la cuenta -->
+                <select
+                  class="form-select mb-3"
+                  aria-label="Cuenta Ahorro Tradicional"
+                >
+                  <option selected>Cuenta Ahorro Tradicional</option>
+                </select>
+
+                <!-- Navbar con pestañas -->
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      [routerLink]="['/movimientos', codCuenta]"
+                    >Movimientos</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      style="color: gray"
+                      class="nav-link"
+                      [routerLink]="['/info-cuenta', codCuenta]"
+                    >Información</a
+                    >
+                  </li>
+                </ul>
+
+                <div class="border">
+                  <hr />
+                  <!--  *ngFor para mostrar la lista de movimientos -->
+                  <div *ngFor="let movimiento of movimientos" class="row mt-3">
+                    <div class="col-6 text-start">
+                     
+                      {{ movimiento.detalle }}
+                    </div>
+
+                    <div class="col-6 text-end">
+                     
+                      <span [ngClass]="{'positive-value': movimiento.valorDebe > 0, 'negative-value': movimiento.valorHaber > 0}">
+                        {{ (movimiento.valorDebe > 0 ? '+' : '-') + (movimiento.valorDebe > 0 ? movimiento.valorDebe : movimiento.valorHaber | currency) }} USD
+                      </span>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

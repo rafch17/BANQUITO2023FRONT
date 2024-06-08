@@ -1,0 +1,65 @@
+<div class="container-fluid p-0">
+    <div class="row">
+    <!-- Navbar -->
+    <div class="col-12 px-0" class="borde-ancho">
+        <app-navbar></app-navbar>
+    </div>
+    </div>
+    <div class="row m-0">
+        <!-- Sidebar -->
+        <div class="col-2 p-0 d-flex flex-column" style="height: 84vh;">
+        <app-sidebar class="flex-grow-1"></app-sidebar>
+    </div>
+    <!-- Main Content -->
+    
+    <div class="col-10 p-0 d-flex">
+        <!-- Aquí puedes colocar el contenido principal -->
+        <div class="p-4 flex-grow-1" style="background-color: #DBD8D8;">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="row contenido my-3 p-5 rounded-4">
+                        <h5>Edición de datos del cliente</h5>
+                        <hr>
+                        <form #myForm="ngForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control my-2" placeholder="Persona" disabled>
+                                <input type="text" class="form-control my-2" placeholder="Cedula" disabled>
+                                <input type="text" class="form-control my-2" placeholder="Nro. Identificacion" [value]="datosCliente?.numeroIdentificacion" disabled>
+                                <input type="text" class="form-control my-2" placeholder="Apellidos" [value]="datosCliente?.apellidos" disabled>
+                                <input type="text" class="form-control my-2" placeholder="Nombres" [value]="datosCliente?.nombres" disabled>
+                                
+                                <input type="date" class="form-control my-2" placeholder="Fecha Nacimineto" name="fechaNacimiento" [(ngModel)]="formattedDate">
+                                
+                                <div class="row">
+                                    <div class="col-3"><input type="text" class="form-control my-2" placeholder="Tipo Direccion" name="tipoDireccion" [(ngModel)]="datosCliente.direcciones[0].tipo"></div>
+                                    <div class="col-3"><input type="text" class="form-control my-2" placeholder="Linea 1" name="linea1" [(ngModel)]="datosCliente.direcciones[0].linea1"></div>
+                                    <div class="col-3"><input type="text" class="form-control my-2" placeholder="Linea 2" name="linea2" [(ngModel)]="datosCliente.direcciones[0].linea2"></div>
+                                    <div class="col-3"><input type="text" class="form-control my-2" placeholder="Código Postal" name="codigoPostal" [(ngModel)]="datosCliente.direcciones[0].codigoPostal"></div>
+                                    <div class="col-3"><input type="text" class="form-control my-2" placeholder="Estado" name="estadoDireccion" [(ngModel)]="datosCliente.direcciones[0].estado"></div>
+                                </div>
+
+                                
+
+                                <input type="text" class="form-control my-2" placeholder="Correo Electronico" name="correoElectronico" [(ngModel)]="datosCliente.correoElectronico">
+
+                                <div class="row">
+                                    <div class="col-4"><input type="text" class="form-control my-2" placeholder="Tipo Telefono" name="tipoTelefono" [(ngModel)]="datosCliente.telefonos[0].tipo"></div>
+                                    <div class="col-4"><input type="text" class="form-control my-2" placeholder="Numero" name="numeroTelefono" [(ngModel)]="datosCliente.telefonos[0].numero"></div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        <div class="px-4 mt-3">
+                            <button type="button" class="btn btn-success mx-1 custom-width-btn" (click)="actualizarDatosCliente()"><i class="bi bi-plus-circle me-2"></i>Guardar</button>
+                            <button type="button" class="btn btn-secondary mx-1" routerLink="/clientes/consultas">Regresar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>
